@@ -1,0 +1,6 @@
+{
+	"ImportPath": "github.com/mttrs/pingpong",
+	"GoVersion": "go1.7",
+	"GodepVersion": "v75",
+	"Deps": []
+}
