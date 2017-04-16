@@ -1,0 +1,17 @@
+{
+  "name": "pingpong",
+  "scripts": {
+  },
+  "env": {
+  },
+  "formation": {
+  },
+  "addons": [
+
+  ],
+  "buildpacks": [
+    {
+      "url": "heroku/go"
+    }
+  ]
+}

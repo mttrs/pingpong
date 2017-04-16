@@ -11,7 +11,7 @@ func handler(w http.ResponseWriter, r *http.Request) {
 }
 
 func main() {
-	http.HandleFunc("/ping", handler)
+	http.HandleFunc("/", handler)
 
 	port := os.Getenv("PORT")
 	if port == "" {
