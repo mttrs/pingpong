@@ -10,13 +10,8 @@ func handler(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintf(w, "pong")
 }
 
-func rootHandler(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprintf(w, "Go to /ping")
-}
-
 func main() {
-	http.HandleFunc("/", rootHandler)
-	http.HandleFunc("/ping", handler)
+	http.HandleFunc("/", handler)
 
 	port := os.Getenv("PORT")
 	if port == "" {
