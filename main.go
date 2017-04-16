@@ -7,7 +7,7 @@ import (
 )
 
 func handler(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprintf(w, "pong")
+	fmt.Fprintf(w, "ppap")
 }
 
 func main() {
@@ -17,6 +17,6 @@ func main() {
 	if port == "" {
 		port = "8080"
 	}
-	fmt.Println("Running on", port, "...")
+	fmt.Println("Running on:", port, "...")
 	http.ListenAndServe(":"+port, nil)
 }
