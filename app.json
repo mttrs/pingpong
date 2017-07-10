@@ -13,8 +13,7 @@
       "quantity": 1,
       "size": "1"
     }
-  }
-  ],
+  },
   "buildpacks": [
     {
       "url": "heroku/go"
