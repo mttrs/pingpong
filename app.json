@@ -5,11 +5,7 @@
   "env": {
   },
   "formation": {
-  },
-  "addons": [
-    {
-      "plan": "heroku-postgresql:standard-0"
-    }
+  }
   ],
   "buildpacks": [
     {
