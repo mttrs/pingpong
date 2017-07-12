@@ -5,6 +5,14 @@
   "env": {
   },
   "formation": {
+    "web": {
+      "quantity": 1,
+      "size": "standard-1x"
+    },
+    "test": {
+      "quantity": 1,
+      "size": "standard-1x"
+    }
   },
   "addons": [
     {

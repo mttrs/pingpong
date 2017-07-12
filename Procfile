@@ -1,2 +1,2 @@
 web: pingpong
-worker: cat Procfile
+test: cat Procfile
