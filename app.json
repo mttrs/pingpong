@@ -1,7 +1,7 @@
 {
   "name": "pingpong",
   "scripts": {
-    "postdeploy": "ls"
+    "postdeploy": "echo 6"
   },
   "env": {
   },
