@@ -1,7 +1,7 @@
 {
   "name": "pingpong",
   "scripts": {
-    "postdeploy": "echo 1"
+    "postdeploy": "echo 2"
   },
   "env": {
   },
