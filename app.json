@@ -4,8 +4,9 @@
     "postdeploy": "env"
   },
   "env": {
-    "API_URL":
+    "API_URL": {
       "required": true
+    }
   },
   "formation": {
   },
