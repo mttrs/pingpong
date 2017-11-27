@@ -1,6 +1,7 @@
 {
   "name": "pingpong",
   "scripts": {
+    "postdeploy": "echo $API_URL; echo 0"
   },
   "env": {
   },
