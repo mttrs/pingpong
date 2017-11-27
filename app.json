@@ -1,9 +1,11 @@
 {
   "name": "pingpong",
   "scripts": {
-    "postdeploy": "echo $API_URL; echo 0"
+    "postdeploy": "env"
   },
   "env": {
+    "API_URL":
+      "required": true
   },
   "formation": {
   },
