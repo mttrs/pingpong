@@ -1,7 +1,6 @@
 {
   "name": "pingpong",
   "scripts": {
-    "postdeploy": "env"
   },
   "env": {
     "API_URL": {
