@@ -2,11 +2,22 @@ package main
 
 import "testing"
 
-func TestReserseStr(t *testing.T) {
-	actual := ReverseStr("hello")
-	expected := "olleh"
+var tests = []struct {
+	in  string
+	out string
+}{
+	{"hello", "olleh"},
+	{"Hi", "iH"},
+	{"おはよう", "うよはお"},
+}
 
-	if actual != expected {
-		t.Fatalf("Expected %s but actual %s", expected, actual)
+func TestReserseStr(t *testing.T) {
+	for _, tt := range tests {
+		actual := ReverseStr(tt.in)
+		expected := tt.out
+
+		if actual != expected {
+			t.Fatalf("Expected %s but actual %s", expected, actual)
+		}
 	}
 }
