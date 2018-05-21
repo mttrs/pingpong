@@ -8,7 +8,7 @@
   },
   "addons": [
     {
-      "plan": "heroku-postgresql:standard-0"
+      "plan": "heroku-postgresql:hobby-dev"
     }
   ],
   "buildpacks": [
