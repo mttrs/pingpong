@@ -2,3 +2,7 @@
   root-package = "github.com/mttrs/pingpong"
   go-version = "go1.10.1"
   ensure = "false"
+
+[[constraint]]
+  name = "github.com/golang-migrate/migrate"
+  version = "3.2.0"
