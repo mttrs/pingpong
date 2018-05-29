@@ -8,7 +8,8 @@
   },
   "addons": [
     {
-      "plan": "heroku-postgresql:standard-0"
+      "plan": "heroku-postgresql:standard-0",
+      "plan": "algoliasearch:free"
     }
   ],
   "buildpacks": [
