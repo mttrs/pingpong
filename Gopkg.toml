@@ -1,6 +1,6 @@
 [metadata.heroku]
   root-package = "github.com/mttrs/pingpong"
-  go-version = "go1.10.1"
+  go-version = "go1.10.3"
   ensure = "false"
 
 [[constraint]]
