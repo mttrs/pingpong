@@ -11,10 +11,7 @@
       "plan": "heroku-postgresql:hobby-dev"
     },
     {
-      "plan": "heroku-redis:hobby-dev",
-      "options": {
-        "maxmemory_policy": "allkeys-lru"
-      }      
+      "plan": "cleardb:ignite"
     }
   ],
   "buildpacks": [
