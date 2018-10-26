@@ -28,8 +28,7 @@
         "test": "env"
       },
       "addons":[
-	"heroku-redis:hobby-dev",
-        "heroku-redis:in-dyno"
+	"heroku-redis:hobby-dev"
       ]
     }
   }
