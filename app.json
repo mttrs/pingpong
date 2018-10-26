@@ -21,5 +21,16 @@
     {
       "url": "heroku/go"
     }
-  ]
+  ],
+  "environments": {
+    "test": {
+      "scripts": {
+        "test": "env"
+      },
+      "addons":[
+        "heroku-redis:in-dyno",
+	"heroku-redis:hobby-dev"
+      ]
+    }
+  }
 }
