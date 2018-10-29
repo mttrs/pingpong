@@ -28,7 +28,8 @@
         "test": "env"
       },
       "addons":[
-	"heroku-redis:hobby-dev"
+	{ "plan": "heroku-redis:hobby-dev", "as": "CI_QUEUE" },
+	{ "plan": "heroku-redis:in-dyno" }
       ]
     }
   }
