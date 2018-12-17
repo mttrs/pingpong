@@ -4,7 +4,8 @@
   },
   "env": {
     "TEST_NAME": {
-      "required": false
+      "required": false,
+      "value": ""
     }
   },
   "formation": {
