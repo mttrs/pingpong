@@ -3,20 +3,13 @@
   "scripts": {
   },
   "env": {
+    "TEST_NAME": {
+      "required": false
+    }
   },
   "formation": {
   },
-  "addons": [
-    {
-      "plan": "heroku-postgresql:hobby-dev"
-    },
-    {
-      "plan": "heroku-redis:hobby-dev",
-      "options": {
-        "maxmemory_policy": "allkeys-lru"
-      }      
-    }
-  ],
+  "addons": [],
   "buildpacks": [
     {
       "url": "heroku/go"
