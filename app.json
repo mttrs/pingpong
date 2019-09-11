@@ -1,12 +1,17 @@
 {
   "name": "pingpong",
   "scripts": {
+    "postdeploy": "echo this is postdeploy script"
   },
   "env": {
   },
   "formation": {
   },
-  "addons": [],
+  "addons": [
+    {
+      "plan": "heroku-postgresql"
+    }
+  ],
   "buildpacks": [
     {
       "url": "heroku/go"
