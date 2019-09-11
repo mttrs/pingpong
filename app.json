@@ -24,6 +24,8 @@
   "buildpacks": [
     {
       "url": "heroku-community/cli"
+    },
+    {
       "url": "heroku/go"
     }
   ]
