@@ -9,9 +9,6 @@
     },
     "HEROKU_PARENT_APP_NAME": {
       "required": true
-    },
-    "HEROKU_API_KEY": {
-      "required": true
     }
   },
   "formation": {
