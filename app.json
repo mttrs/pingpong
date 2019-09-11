@@ -10,7 +10,7 @@
     "HEROKU_PARENT_APP_NAME": {
       "required": true
     },
-    "HEROKU_APIT_KEY": {
+    "HEROKU_API_KEY": {
       "required": true 
     }
   },
