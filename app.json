@@ -1,7 +1,6 @@
 {
   "name": "pingpong",
   "scripts": {
-    "postdeploy": "heroku pg:backups:restore ${HEROKU_PARENT_APP_NAME}::b001 -a $HEROKU_APP_NAME -c $HEROKU_APP_NAME"
   },
   "env":{
     "HEROKU_APP_NAME": {
