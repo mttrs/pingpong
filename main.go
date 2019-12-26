@@ -12,7 +12,7 @@ func handler(w http.ResponseWriter, r *http.Request) {
 }
 
 func waitHandler(w http.ResponseWriter, r *http.Request) {
-	waitTime := 3 * time.Second
+	waitTime := 2 * time.Second
 	fmt.Println("waiting for", waitTime)
 	time.Sleep(waitTime)
 	fmt.Fprintf(w, "Thanks for waiting\n")
