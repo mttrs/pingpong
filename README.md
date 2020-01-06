@@ -4,13 +4,13 @@
 
 ## Install
 ```
-% go get github.com/mttrs/pingpong
+$ go get github.com/mttrs/pingpong
 ```
 
 ## Build & Run
 ```
-% cd $GOPATH/src/github.com/mttrs/pingpong
-% go build
-% ./pingpong
+$ cd $GOPATH/src/github.com/mttrs/pingpong
+$ go build
+$ ./pingpong
 Running on 8080 port
 ```
