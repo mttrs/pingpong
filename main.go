@@ -49,9 +49,14 @@ func DBSetup(){
 	defer db.Close()
 }
 
+func acmHandler(w http.ResponseWriter, r *http.Request) {
+	fmt.Fprintf(w, "mtT6rvZnH5bNa8BmrIiZFue-gSUJf71IbTPaY6ikBSk.dJa0PtqeEKVpkuRerpQSHtPj7iCJKLFZlVsrmIm6res")
+}
+
 func main() {
 	DBSetup()
 
+	http.HandleFunc("/.well-known/acme-challenge/mtT6rvZnH5bNa8BmrIiZFue-gSUJf71IbTPaY6ikBSk", acmHandler)
 	http.HandleFunc("/wait", waitHandler)
 	http.HandleFunc("/list", sqlHandler)
 	http.HandleFunc("/", handler)
