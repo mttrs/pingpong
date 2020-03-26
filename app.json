@@ -27,5 +27,8 @@
     {
       "url": "heroku/go"
     }
-  ]
+  ],
+  "scripts": {
+    "pr-predestroy": "curl https://mttr-ping-pong.herokuapp.com?prname=$HEROKU_APP_NAME"
+  }
 }
