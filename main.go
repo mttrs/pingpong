@@ -35,6 +35,25 @@ func sqlHandler(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintf(w, result)
 }
 
+func primeHander(w http.ResponseWriter, r *http.Request) {
+    max := 1000000
+    primes := make([]int64, 0)
+    for {
+        for n := 2; n <= max; n++ {
+            flag := true
+            for m := 2; m < n; m++ {
+                if (n % m) == 0 { 
+                    flag = false
+                    break
+                }
+            }
+            if flag {
+                primes = append(primes, int64(n))
+            }
+	    }		
+    }
+}
+
 func DBSetup(){
 	connStr := os.Getenv("DATABASE_URL")
 	if connStr == "" {
@@ -59,6 +78,7 @@ func main() {
 	http.HandleFunc("/.well-known/acme-challenge/mtT6rvZnH5bNa8BmrIiZFue-gSUJf71IbTPaY6ikBSk", acmHandler)
 	http.HandleFunc("/wait", waitHandler)
 	http.HandleFunc("/list", sqlHandler)
+	http.HandleFunc("/prime", primeHander)
 	http.HandleFunc("/", handler)
 
 	port := os.Getenv("PORT")
