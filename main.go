@@ -4,10 +4,11 @@ import (
 	"database/sql"
 	"fmt"
 	"log"
-_	"github.com/lib/pq"
 	"net/http"
 	"os"
 	"time"
+
+	_ "github.com/lib/pq"
 )
 
 var db *sql.DB
@@ -36,25 +37,25 @@ func sqlHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func primeHander(w http.ResponseWriter, r *http.Request) {
-    max := 1000000
-    primes := make([]int64, 0)
-    for {
-        for n := 2; n <= max; n++ {
-            flag := true
-            for m := 2; m < n; m++ {
-                if (n % m) == 0 { 
-                    flag = false
-                    break
-                }
-            }
-            if flag {
-                primes = append(primes, int64(n))
-            }
-	    }		
-    }
+	max := 1000000
+	primes := make([]int64, 0)
+	for {
+		for n := 2; n <= max; n++ {
+			flag := true
+			for m := 2; m < n; m++ {
+				if (n % m) == 0 {
+					flag = false
+					break
+				}
+			}
+			if flag {
+				primes = append(primes, int64(n))
+			}
+		}
+	}
 }
 
-func DBSetup(){
+func DBSetup() {
 	connStr := os.Getenv("DATABASE_URL")
 	if connStr == "" {
 		connStr = "postgres://localhost:5432/postgres?sslmode=disable"
@@ -73,6 +74,7 @@ func acmHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func main() {
+	// TODO: https://gist.github.com/tsenart/5fc18c659814c078378d
 	DBSetup()
 
 	http.HandleFunc("/.well-known/acme-challenge/mtT6rvZnH5bNa8BmrIiZFue-gSUJf71IbTPaY6ikBSk", acmHandler)
