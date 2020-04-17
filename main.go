@@ -18,7 +18,11 @@ func handler(w http.ResponseWriter, r *http.Request) {
 }
 
 func waitHandler(w http.ResponseWriter, r *http.Request) {
-	waitTime := 2 * time.Second
+	t := os.Getenv("WAIT_TIME")
+	if t == "" {
+		t = "2s"
+	}
+	waitTime, _ := time.ParseDuration(t)
 	log.Println("waiting for", waitTime)
 	time.Sleep(waitTime)
 
