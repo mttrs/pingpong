@@ -5,6 +5,9 @@
   "env":{
   },
   "formation": {
+    "web": {
+      "size": "performance-m"
+    },
     "release": {
       "size": "performance-l"
     }
