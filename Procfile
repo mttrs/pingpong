@@ -1,2 +1,2 @@
-release: ls
+release: ulimit -u
 web: pingpong
