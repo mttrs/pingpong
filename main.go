@@ -8,6 +8,7 @@ import (
 	"os"
 	"time"
 
+	"github.com/gomodule/redigo/redis"
 	_ "github.com/lib/pq"
 )
 
@@ -73,6 +74,19 @@ func DBSetup() {
 	defer db.Close()
 }
 
+func pingHandler(w http.ResponseWriter, r *http.Request) {
+	c, err := redis.DialURL(os.Getenv("REDIS_URL"))
+	if err != nil {
+		// Handle error
+	}
+	defer c.Close()
+
+	for i := 0; i < 10; i++ {
+		m, _ := c.Do("PING")
+		fmt.Println(m)
+	}
+}
+
 func acmHandler(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintf(w, "mtT6rvZnH5bNa8BmrIiZFue-gSUJf71IbTPaY6ikBSk.dJa0PtqeEKVpkuRerpQSHtPj7iCJKLFZlVsrmIm6res")
 }
@@ -85,6 +99,7 @@ func main() {
 	http.HandleFunc("/wait", waitHandler)
 	http.HandleFunc("/list", sqlHandler)
 	http.HandleFunc("/prime", primeHander)
+	http.HandleFunc("/ping", pingHandler)
 	http.HandleFunc("/", handler)
 
 	port := os.Getenv("PORT")

@@ -4,4 +4,7 @@ module github.com/mttrs/pingpong
 
 go 1.13
 
-require github.com/lib/pq v1.3.0
+require (
+	github.com/gomodule/redigo v1.8.2
+	github.com/lib/pq v1.3.0
+)
