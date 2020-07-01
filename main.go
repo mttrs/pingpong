@@ -77,17 +77,20 @@ func DBSetup() {
 func pingHandler(w http.ResponseWriter, r *http.Request) {
 	c, err := redis.DialURL(os.Getenv("REDIS_URL"))
 	if err != nil {
-		// Handle error
+		fmt.Println(err)
 	}
 	defer c.Close()
 
-	m := ""
-
 	for i := 0; i < 10; i++ {
-		m, _ := c.Do("PING")
-		fmt.Println(m)
+		s, err := c.Do("PING")
+		if err != nil {
+			fmt.Println(err)
+		}
+		if i == 0 {
+			fmt.Println(s)
+		}
 	}
-	fmt.Fprintf(w, m)
+	fmt.Fprintf(w, "PONG")
 }
 
 func acmHandler(w http.ResponseWriter, r *http.Request) {
@@ -96,11 +99,11 @@ func acmHandler(w http.ResponseWriter, r *http.Request) {
 
 func main() {
 	// TODO: https://gist.github.com/tsenart/5fc18c659814c078378d
-	DBSetup()
+	//	DBSetup()
 
 	http.HandleFunc("/.well-known/acme-challenge/mtT6rvZnH5bNa8BmrIiZFue-gSUJf71IbTPaY6ikBSk", acmHandler)
 	http.HandleFunc("/wait", waitHandler)
-	http.HandleFunc("/list", sqlHandler)
+	//	http.HandleFunc("/list", sqlHandler)
 	http.HandleFunc("/prime", primeHander)
 	http.HandleFunc("/ping", pingHandler)
 	http.HandleFunc("/", handler)
