@@ -81,10 +81,13 @@ func pingHandler(w http.ResponseWriter, r *http.Request) {
 	}
 	defer c.Close()
 
+	m := ""
+
 	for i := 0; i < 10; i++ {
 		m, _ := c.Do("PING")
 		fmt.Println(m)
 	}
+	fmt.Fprintf(w, m)
 }
 
 func acmHandler(w http.ResponseWriter, r *http.Request) {
