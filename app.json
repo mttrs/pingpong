@@ -17,7 +17,8 @@
   },
   "addons": [
     {
-      "plan": "heroku-postgresql"
+      "plan": "heroku-postgresql",
+      "plan": "scout"
     }
   ],
   "buildpacks": [
