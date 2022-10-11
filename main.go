@@ -114,10 +114,12 @@ func main() {
 	}
 	log.Println("Running on:", port, "...")
 
-	t := "65s"
+	t := "80s"
 	waitTime, _ := time.ParseDuration(t)
 	log.Println("waiting for", waitTime, "...")
 	time.Sleep(waitTime)
 
 	http.ListenAndServe(":"+port, nil)
+
+	log.Println("server up...")
 }
