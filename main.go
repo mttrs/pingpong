@@ -6,6 +6,8 @@ import (
 	"log"
 	"net/http"
 	"os"
+	"runtime"
+	"sync"
 	"time"
 
 	"github.com/gomodule/redigo/redis"
@@ -41,23 +43,36 @@ func sqlHandler(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintf(w, result)
 }
 
-func primeHander(w http.ResponseWriter, r *http.Request) {
-	max := 1000000
-	primes := make([]int64, 0)
-	for {
-		for n := 2; n <= max; n++ {
-			flag := true
-			for m := 2; m < n; m++ {
-				if (n % m) == 0 {
-					flag = false
-					break
-				}
-			}
-			if flag {
-				primes = append(primes, int64(n))
+func findPrimes(max int, wg *sync.WaitGroup) {
+	defer wg.Done()
+	primes := make([]int, 0)
+	for n := 2; n <= max; n++ {
+		flag := true
+		for m := 2; m < n; m++ {
+			if (n % m) == 0 {
+				flag = false
+				break
 			}
 		}
+		if flag {
+			primes = append(primes, n)
+		}
 	}
+}
+
+func primeHander(w http.ResponseWriter, r *http.Request) {
+	n := runtime.NumCPU()
+
+	var wg sync.WaitGroup
+	wg.Add(n)
+
+	max := 1000000
+	for i := 0; i < n; i++ {
+		go findPrimes(max, &wg)
+	}
+	wg.Wait()
+
+	fmt.Fprintf(w, "Finished prime number calculation on %d cores.\n", n)
 }
 
 func DBSetup() {
@@ -94,14 +109,16 @@ func pingHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func acmHandler(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprintf(w, "mtT6rvZnH5bNa8BmrIiZFue-gSUJf71IbTPaY6ikBSk.dJa0PtqeEKVpkuRerpQSHtPj7iCJKLFZlVsrmIm6res")
+	// fmt.Fprintf(w, "mtT6rvZnH5bNa8BmrIiZFue-gSUJf71IbTPaY6ikBSk.dJa0PtqeEKVpkuRerpQSHtPj7iCJKLFZlVsrmIm6res")
 }
 
 func main() {
+	numCPU := runtime.NumCPU()
+	fmt.Printf("Detected %d CPU cores.\n", numCPU)
+
 	// TODO: https://gist.github.com/tsenart/5fc18c659814c078378d
 	//	DBSetup()
 
-	http.HandleFunc("/.well-known/acme-challenge/mtT6rvZnH5bNa8BmrIiZFue-gSUJf71IbTPaY6ikBSk", acmHandler)
 	http.HandleFunc("/wait", waitHandler)
 	//	http.HandleFunc("/list", sqlHandler)
 	http.HandleFunc("/prime", primeHander)
@@ -114,10 +131,10 @@ func main() {
 	}
 	log.Println("Running on:", port, "...")
 
-	t := "65s"
-	waitTime, _ := time.ParseDuration(t)
-	log.Println("waiting for", waitTime, "...")
-	time.Sleep(waitTime)
+	//	t := "65s"
+	//	waitTime, _ := time.ParseDuration(t)
+	//	log.Println("waiting for", waitTime, "...")
+	//	time.Sleep(waitTime)
 
 	http.ListenAndServe(":"+port, nil)
 }
