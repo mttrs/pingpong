@@ -66,7 +66,7 @@ func primeHander(w http.ResponseWriter, r *http.Request) {
 	var wg sync.WaitGroup
 	wg.Add(n)
 
-	max := 1000000
+	max := 100000
 	for i := 0; i < n; i++ {
 		go findPrimes(max, &wg)
 	}
