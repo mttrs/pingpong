@@ -12,5 +12,12 @@
     {
       "url": "heroku/go"
     }
-  ]
+  ],
+  "environments": {
+    "test": {
+      "scripts": {
+        "test": "go test -v ./..."
+      }
+    }
+  }
 }
