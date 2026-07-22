@@ -3,27 +3,12 @@
   "scripts": {
   },
   "env":{
-    "HEROKU_APP_NAME": {
-      "required": true
-    },
-    "HEROKU_PARENT_APP_NAME": {
-      "required": true
-    },
-    "HEROKU_API_KEY": {
-      "required": true 
-    }
   },
   "formation": {
   },
   "addons": [
-    {
-      "plan": "heroku-postgresql"
-    }
   ],
   "buildpacks": [
-    {
-      "url": "heroku-community/cli"
-    },
     {
       "url": "heroku/go"
     }
