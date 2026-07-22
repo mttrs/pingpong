@@ -1,7 +1,7 @@
 package main
 
 import (
-	"io"
+	"io/ioutil"
 	"net/http"
 	"net/http/httptest"
 	"testing"
@@ -20,7 +20,7 @@ func TestHandler(t *testing.T) {
 		t.Errorf("status code = %d, want %d", res.StatusCode, http.StatusOK)
 	}
 
-	body, err := io.ReadAll(res.Body)
+	body, err := ioutil.ReadAll(res.Body)
 	if err != nil {
 		t.Fatalf("failed to read body: %v", err)
 	}
